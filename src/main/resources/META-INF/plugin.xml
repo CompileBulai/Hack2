@@ -1,0 +1,32 @@
+<idea-plugin>
+    <id>com.bulai.crispy</id>
+    <name>Crispy</name>
+    <vendor email="bulaialexandru0@gmail.com">Bulai Dev</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+    <resource-bundle>messages.MyBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- ToolWindow-ul Crispy ToDoList -->
+        <toolWindow
+                id="ToDoList"
+                anchor="right"
+                factoryClass="com.github.compilebulai.hack.toolWindow.ToDoList"
+                secondary="false"
+
+        />
+
+        <!-- Pornire automată când se deschide proiectul -->
+        <postStartupActivity implementation="com.github.compilebulai.hack.startup.MyProjectActivity" />
+    </extensions>
+
+    <actions>
+        <!-- Acțiune custom în meniul contextual din editor: "Associate Code with Task" -->
+        <action id="AssociateCodeWithTask"
+                class="com.github.compilebulai.hack.actions.AssociateCodeWithTaskActionWrapper"
+                text="Associate Code with Task"
+                description="Associate selected code with a task">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
